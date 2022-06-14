@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BusSummary>
+
+<div class="row">
+    <div class="col-12 col-md-8">
+
+        <div class="float-right mb-3">
+            <a class="btn btn-sm btn-info" asp-controller="Bus" asp-action="Create">Yeni Otobüs</a>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Model Adı</th>
+                    <th>Plaka</th>
+                    <th>Yıl</th>
+                    <th>Otobüs Tipi</th>
+                    <th>Koltuk Sayısı</th>
+                    <th>KM</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var bus in Model)
+                {
+                    <tr>
+                        <td>@bus.Id</td>
+                        <td>@bus.BusModelName</td>
+                        <td>@bus.RegistrationPlate</td>
+                        <td>@bus.Year</td>
+                        <td>@bus.SeatMapping</td>
+                        <td>@bus.SeatCount</td>
+                        <td>@bus.DistanceTraveled</td>
+
+                        <td>
+                            <a class="text-danger" asp-controller="Bus" asp-action="Delete" asp-route-id="@bus.Id">Sil</a>
+                            |
+                            <a asp-controller="Bus" asp-action="Update" asp-route-id="@bus.Id">Düzenle</a>
+
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+</div>

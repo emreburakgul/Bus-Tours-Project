@@ -1,0 +1,59 @@
+﻿@using RebelTours.Management.Application
+
+@model StationDTO
+
+
+<h3>İstaston Ekleme</h3>
+
+@if (ViewBag.CommandResult != null)
+{
+    var result = (CommandResult)ViewBag.CommandResult;
+
+    <div class="row">
+        <div class="col-12 col-sm-8 col-md-6">
+            <div class="alert @(result.IsSucceeded ? "alert-success" : "alert-danger")">
+                @(result.Messages.Any() ? result.Messages.First() : "Hata")
+            </div>
+        </div>
+    </div>
+}
+
+
+
+<div class="row">
+
+
+    <div class="col-12 col-sm-8 col-md-6">
+        <form method="post" asp-action="Create" asp-controller="Station">
+
+            <div class="mb-3">
+                <label asp-for="Name">Terminal Adı</label>
+                <input asp-for="Name" class="form-control" type="text" autocomplete="off" />
+            </div>
+            <div>
+                @* select item ifadesi items kadar döndürür *@
+                <select asp-for="CityId" asp-items="ViewBag.Cities" class="form-control">
+                </select>
+
+                @* manuel yapım *@
+
+                @*@foreach (SelectListItem item in ViewBag.Cities)
+                    {
+
+
+                        <option value="@item.Value">@item.Text</option>
+
+                    }*@
+            </div>
+
+            <div class="float-right mt-3">
+                <button type="submit" class="btn btn-primary">
+                    Kaydet
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+

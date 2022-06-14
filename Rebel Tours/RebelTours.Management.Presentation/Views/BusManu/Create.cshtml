@@ -1,0 +1,29 @@
+﻿@model BusManuDTO
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="row">
+        <div class="col-md-8 col-12 col-sm-6">
+            <div class="alert-danger alert">
+                @ViewBag.ErrorMessage
+            </div>
+        </div>
+    </div>
+}
+
+<div class="row">
+    <div class="col-12 col-md-8 col-sm-5">
+        <form method="post" asp-action="Create"  asp-controller="BusManu">
+          <div class="mb-3">
+                <label asp-for="Name">Üretici Adı</label>
+                <input type="text" asp-for="Name" class="form-control" autocomplete="off" />
+            </div>
+
+            <div class="float-right">
+
+                <button type="submit" class="btn btn-primary">
+                    Kaydet
+                </button>
+        </form>        
+    </div>
+</div>

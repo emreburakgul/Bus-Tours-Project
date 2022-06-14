@@ -1,0 +1,38 @@
+﻿@using RebelTours.Management.Application 
+
+@model IEnumerable<CityDTO>
+
+<div class="row">
+    <div class="col-12 col-md-8">
+        <div class="float-right mb-3">
+            <a class="btn btn-sm btn-info" asp-action="Create" asp-controller="City">Yeni Şehir</a>
+        </div>
+        <table class="table table-striped">
+
+            <thead>
+                <tr>
+
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var city in Model)
+                {
+                    <tr>
+                        <td>@city.Id</td>
+                        <td>@city.Name</td>
+                        <td>
+                            <a class="text-danger" asp-route-id="@city.Id" asp-controller="City" asp-action="Delete">Sil</a>
+                            <a asp-controller="City" asp-action="Update" asp-route-id="@city.Id">Güncelle</a>
+
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+</div>

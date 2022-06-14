@@ -1,0 +1,35 @@
+﻿@model IEnumerable<BusManuDTO>
+
+<div class="row">
+    <div class="col-12 col-md-8">
+        <div class="float-right mb-3">
+            <a class="btn btn-sm btn-info" asp-action="Create" asp-controller="BusManu">Yeni Tedarikçi</a>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var busManu in Model)
+                {
+                    <tr>
+                        <td>@busManu.Id</td>
+                        <td>@busManu.Name</td>
+                        <td>
+                            <a class="text-danger" asp-route-id="@busManu.Id"  asp-controller="BusManu" asp-action="Delete">Sil</a>
+                            <a asp-controller="BusManu" asp-action="Update" asp-route-id="@busManu.Id">Güncelle</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+    </div>
+
+</div>

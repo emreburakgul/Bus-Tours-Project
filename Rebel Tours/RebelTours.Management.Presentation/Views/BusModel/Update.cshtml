@@ -1,0 +1,37 @@
+﻿@model BusModelDTO
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-7">
+            <div class="alert-danger alert">               
+                @ViewBag.Error
+            </div>
+        </div>
+    </div>
+}
+
+
+
+<div class="row">
+
+    <div class="col-12 col-md-8 col-sm-5">
+        <form method="post" asp-action="Update" asp-controller="BusModel">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-3">
+                <label asp-for="Name">Model Adı</label>
+                <input asp-for="Name" class="form-control" type="text" autocomplete="off" />
+            </div>
+                       
+
+            <div class="float-right">
+                <button type="submit" class="btn btn-secondary">
+                    Kaydet
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>

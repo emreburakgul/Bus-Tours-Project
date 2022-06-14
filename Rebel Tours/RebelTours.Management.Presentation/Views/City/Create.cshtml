@@ -1,0 +1,46 @@
+﻿@using RebelTours.Management.Application
+
+@model CityDTO
+
+@if (ViewBag.CommandResult != null)
+{
+    var result = (CommandResult)ViewBag.CommandResult;
+
+    @foreach (var item in result.Messages)
+    {
+        <div class="alert @(result.IsSucceeded ? "alert-success" : "alert-danger")">
+            @item
+        </div>
+    }
+
+}
+
+@*@if (ViewBag.ErrorMessage != null)
+    {
+        <div class="row">
+            <div class="col-12 col-sm-8 col-md-6">
+                <div class="alert-danger alert">
+                    @ViewBag.ErrorMessage
+                </div>
+            </div>
+        </div>
+    }*@
+
+<div class="row">
+    <div class="col-12 col-sm-8 col-md-6">
+
+        <form method="post" asp-action="Create" asp-controller="City">
+            <div class="mb-3">
+                <label asp-for="Name">Şehir Adı</label>
+                <input type="text" asp-for="Name" class="form-control" autocomplete="off" />
+            </div>
+
+            <div class="float-right">
+
+                <button type="submit" class="btn btn-primary">
+                    Kaydet
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

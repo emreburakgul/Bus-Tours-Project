@@ -1,0 +1,37 @@
+﻿@model StationDTO
+
+<div class="row">
+    <div class="col-12 col-md-8 col-sm-4">
+        <div class="alert alert-warning">
+            <label>Dikkat!!! Silmek istediğine emin misin?</label>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 col-md-8 col-sm-4">
+        <form method="post" asp-action="Delete" asp-controller="Station">
+            <input type="hidden" asp-for="Id" />
+
+            @*<input type="hidden" id="Id" name="Id" value="@Model.Id" />*@
+            @*@Html.HiddenFor(m => m.Id)*@
+
+        <div class="mb-3 ">
+            <label>İstasyon Adı</label>
+            <input class="form-control" asp-for="Name" type="text" placeholder="Disabled input"  disabled>
+            <label>Şehir Adı</label>
+            <input class="form-control"  type="text" value="@ViewBag.SelectedCity " disabled readonly>
+
+        </div>
+            <div class="float-right">
+
+                <button type="submit" class="btn btn-warning">
+                    Onayla
+                </button>
+                <a class="btn btn-success"  asp-action="Index" asp-controller="City">
+                    İptal
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

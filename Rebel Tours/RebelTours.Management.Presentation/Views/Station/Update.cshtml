@@ -1,0 +1,57 @@
+﻿@model StationDTO
+
+
+<h3>İstaston Ekleme</h3>
+<br />
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-7">
+            <div class="alert-danger alert">
+
+                @ViewBag.ErrorMessage
+            </div>
+        </div>
+    </div>
+}
+
+
+
+<div class="row">
+
+
+    <div class="col-12 col-md-8 col-sm-5">
+        <form method="post" asp-action="Update" asp-controller="Station">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-3">
+                <label asp-for="Name">Terminal Adı</label>
+                <input asp-for="Name" class="form-control" type="text" autocomplete="off" />
+            </div>
+            <div>
+                @* select item ifadesi items kadar döndürür *@
+                <select asp-for="CityId" asp-items="ViewBag.Cities" class="form-control">
+                </select>
+
+                @* manuel yapım *@
+
+                @*@foreach (SelectListItem item in ViewBag.Cities)
+                    {
+
+
+                        <option value="@item.Value">@item.Text</option>
+
+                    }*@
+            </div>
+
+            <div class="float-right">
+                <button type="submit" class="btn btn-primary">
+                    Kaydet
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
